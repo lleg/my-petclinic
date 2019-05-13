@@ -1,6 +1,5 @@
 package ru.my.petclinic.dummy.mypetclinic.bootstrap;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.my.petclinic.dummy.mypetclinic.model.Owner;
@@ -15,9 +14,10 @@ public class DataLoader implements CommandLineRunner {
     private final VetServiceMap vetServiceMap;
 
 
-    public DataLoader() {
-        this.ownerServiceMap = new OwnerServiceMap();
-        this.vetServiceMap = new VetServiceMap();
+    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap) {
+
+        this.ownerServiceMap = ownerServiceMap;
+        this.vetServiceMap = vetServiceMap;
     }
 
     @Override

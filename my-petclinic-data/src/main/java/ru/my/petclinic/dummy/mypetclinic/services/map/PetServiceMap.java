@@ -1,5 +1,6 @@
 package ru.my.petclinic.dummy.mypetclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import ru.my.petclinic.dummy.mypetclinic.model.Pet;
 import ru.my.petclinic.dummy.mypetclinic.services.CrudService;
 import ru.my.petclinic.dummy.mypetclinic.services.PetService;
@@ -7,6 +8,7 @@ import ru.my.petclinic.dummy.mypetclinic.services.map.BaseMapService;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends BaseMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
