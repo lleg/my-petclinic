@@ -7,6 +7,7 @@ import ru.my.petclinic.dummy.mypetclinic.model.Vet;
 import ru.my.petclinic.dummy.mypetclinic.services.map.OwnerServiceMap;
 import ru.my.petclinic.dummy.mypetclinic.services.map.VetServiceMap;
 
+
 @Component
 public class DataLoader implements CommandLineRunner {
 
