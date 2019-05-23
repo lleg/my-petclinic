@@ -2,14 +2,12 @@ package ru.my.petclinic.dummy.mypetclinic.services.map;
 
 import org.springframework.stereotype.Service;
 import ru.my.petclinic.dummy.mypetclinic.model.Vet;
-import ru.my.petclinic.dummy.mypetclinic.services.CrudService;
 import ru.my.petclinic.dummy.mypetclinic.services.VetService;
-import ru.my.petclinic.dummy.mypetclinic.services.map.BaseMapService;
 
 import java.util.Set;
 
 @Service
-public class VetServiceMap extends BaseMapService<Vet, Long> implements VetService {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
@@ -22,8 +20,8 @@ public class VetServiceMap extends BaseMapService<Vet, Long> implements VetServi
     }
 
     @Override
-    public Vet save(Long aLong, Vet object) {
-        return super.save(aLong, object);
+    public Vet save(Vet object) {
+        return super.save(object);
     }
 
     @Override
