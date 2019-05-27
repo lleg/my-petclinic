@@ -3,8 +3,10 @@ package ru.my.petclinic.dummy.mypetclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.my.petclinic.dummy.mypetclinic.model.Owner;
+import ru.my.petclinic.dummy.mypetclinic.model.PetType;
 import ru.my.petclinic.dummy.mypetclinic.model.Vet;
 import ru.my.petclinic.dummy.mypetclinic.services.map.OwnerServiceMap;
+import ru.my.petclinic.dummy.mypetclinic.services.map.PetTypesServiceMap;
 import ru.my.petclinic.dummy.mypetclinic.services.map.VetServiceMap;
 
 
@@ -13,12 +15,14 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerServiceMap ownerServiceMap;
     private final VetServiceMap vetServiceMap;
+    private final PetTypesServiceMap petTypesServiceMap;
 
 
-    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap) {
+    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap, PetTypesServiceMap petTypesServiceMap) {
 
         this.ownerServiceMap = ownerServiceMap;
         this.vetServiceMap = vetServiceMap;
+        this.petTypesServiceMap = petTypesServiceMap;
     }
 
     @Override
@@ -49,6 +53,18 @@ public class DataLoader implements CommandLineRunner {
         vetServiceMap.save(vet2);
 
         System.out.println("@@@@@@@@@@ Vets loaded");
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+
+        petTypesServiceMap.save(cat);
+        petTypesServiceMap.save(dog);
+
+        System.out.println("@@@@@@@@@@ PetTypes loaded");
+
 
     }
 }
