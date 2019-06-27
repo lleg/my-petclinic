@@ -1,8 +1,10 @@
 package ru.my.petclinic.dummy.mypetclinic.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import ru.my.petclinic.dummy.mypetclinic.model.*;
+import ru.my.petclinic.dummy.mypetclinic.services.*;
 import ru.my.petclinic.dummy.mypetclinic.services.map.*;
 
 import java.time.LocalDate;
@@ -11,14 +13,14 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final OwnerServiceMap ownerServiceMap;
-    private final VetServiceMap vetServiceMap;
-    private final PetTypesServiceMap petTypesServiceMap;
-    private final SpecialityServiceMap specialityServiceMap;
-    private final VisitSeviceMap visitSeviceMap;
+    private final OwnerService ownerServiceMap;
+    private final VetService vetServiceMap;
+    private final PetTypeService petTypesServiceMap;
+    private final SpecialityService specialityServiceMap;
+    private final VisitService visitSeviceMap;
 
 
-    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap, PetTypesServiceMap petTypesServiceMap, SpecialityServiceMap specialityServiceMap, VisitSeviceMap visitSeviceMap) {
+    public DataLoader(OwnerService ownerServiceMap, VetService vetServiceMap, PetTypeService petTypesServiceMap, SpecialityService specialityServiceMap, VisitService visitSeviceMap) {
 
         this.ownerServiceMap = ownerServiceMap;
         this.vetServiceMap = vetServiceMap;
@@ -77,7 +79,7 @@ public class DataLoader implements CommandLineRunner {
         owner2Pet.setBirthDate(LocalDate.now());
         owner2Pet.setOwner(owner2);
 
-        owner1.getPets().add(owner2Pet);
+        owner2.getPets().add(owner2Pet);
 
         ownerServiceMap.save(owner1);
         ownerServiceMap.save(owner2);
