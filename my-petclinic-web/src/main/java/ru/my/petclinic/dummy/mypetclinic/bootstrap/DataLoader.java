@@ -3,11 +3,7 @@ package ru.my.petclinic.dummy.mypetclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.my.petclinic.dummy.mypetclinic.model.*;
-import ru.my.petclinic.dummy.mypetclinic.services.PetTypeService;
-import ru.my.petclinic.dummy.mypetclinic.services.map.OwnerServiceMap;
-import ru.my.petclinic.dummy.mypetclinic.services.map.PetTypesServiceMap;
-import ru.my.petclinic.dummy.mypetclinic.services.map.SpecialityServiceMap;
-import ru.my.petclinic.dummy.mypetclinic.services.map.VetServiceMap;
+import ru.my.petclinic.dummy.mypetclinic.services.map.*;
 
 import java.time.LocalDate;
 
@@ -19,14 +15,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetServiceMap vetServiceMap;
     private final PetTypesServiceMap petTypesServiceMap;
     private final SpecialityServiceMap specialityServiceMap;
+    private final VisitSeviceMap visitSeviceMap;
 
 
-    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap, PetTypesServiceMap petTypesServiceMap, SpecialityServiceMap specialityServiceMap) {
+    public DataLoader(OwnerServiceMap ownerServiceMap, VetServiceMap vetServiceMap, PetTypesServiceMap petTypesServiceMap, SpecialityServiceMap specialityServiceMap, VisitSeviceMap visitSeviceMap) {
 
         this.ownerServiceMap = ownerServiceMap;
         this.vetServiceMap = vetServiceMap;
         this.petTypesServiceMap = petTypesServiceMap;
         this.specialityServiceMap = specialityServiceMap;
+        this.visitSeviceMap = visitSeviceMap;
     }
 
     @Override
@@ -114,5 +112,20 @@ public class DataLoader implements CommandLineRunner {
         vetServiceMap.save(vet2);
 
         System.out.println("@@@@@@@@@@ Vets loaded");
+
+        Visit visit1 = new Visit();
+        visit1.setDate(LocalDate.now());
+        visit1.setDescription("Dog");
+        visit1.setPet(owner1Pet);
+
+        Visit visit2 = new Visit();
+        visit2.setDate(LocalDate.now());
+        visit2.setDescription("Cat");
+        visit2.setPet(owner2Pet);
+
+        visitSeviceMap.save(visit1);
+        visitSeviceMap.save(visit2);
+
+        System.out.println("@@@@@@@@@@ Visits loaded");
     }
 }

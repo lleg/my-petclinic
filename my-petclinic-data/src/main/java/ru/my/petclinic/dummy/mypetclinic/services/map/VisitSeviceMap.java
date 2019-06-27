@@ -1,23 +1,24 @@
 package ru.my.petclinic.dummy.mypetclinic.services.map;
 
-import ru.my.petclinic.dummy.mypetclinic.model.Visits;
+import org.springframework.stereotype.Service;
+import ru.my.petclinic.dummy.mypetclinic.model.Visit;
 import ru.my.petclinic.dummy.mypetclinic.services.VisitService;
 
 import java.util.Set;
-
-public class VisitSeviceMap extends AbstractMapService<Visits, Long> implements VisitService {
+@Service
+public class VisitSeviceMap extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
-    public Set<Visits> findAll() {
+    public Set<Visit> findAll() {
         return super.findAll();
     }
 
     @Override
-    public Visits findById(Long aLong) {
+    public Visit findById(Long aLong) {
         return super.findById(aLong);
     }
 
     @Override
-    public Visits save(Visits visit) {
+    public Visit save(Visit visit) {
         if(visit.getPet() == null || visit.getPet().getOwner() == null ||
                 visit.getPet().getId() == null || visit.getPet().getOwner().getId() == null){
             throw new RuntimeException("Invalid visit");
@@ -31,7 +32,7 @@ public class VisitSeviceMap extends AbstractMapService<Visits, Long> implements 
     }
 
     @Override
-    public void delete(Visits object) {
+    public void delete(Visit object) {
         super.delete(object);
     }
 }
