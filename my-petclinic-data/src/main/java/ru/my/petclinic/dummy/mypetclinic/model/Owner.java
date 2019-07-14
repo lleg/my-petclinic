@@ -35,4 +35,7 @@ public class Owner extends Person {
     private Set<Pet> pets = new HashSet();
 
 
+    public Owner(long id, String firstName, String lastName) {
+        super(id, firstName, lastName);
+    }
 }
